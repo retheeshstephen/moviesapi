@@ -2,15 +2,17 @@ const  express = require('express')
 const movieRoute = require('./routes/movies')
 
 require('dotenv').config()
-
-const connectDB = require('./connection/connection')
-connectDB()
-
 const app = express()
 
 
 
+// middleware
 
+app.use(express.json())
+
+
+const connectDB = require('./connection/connection')
+connectDB()
 
 
 
@@ -32,3 +34,7 @@ app.listen(PORT,()=>{
     console.log(`server connected successfully in ${PORT}`);
     
 })
+
+
+
+
