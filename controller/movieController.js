@@ -73,8 +73,21 @@ try {
 }
 
 
- const movieDelete = (req,res)=>{
-    res.send("delete all movie list")
+ const movieDelete = async (req,res)=>{
+ 
+    try {
+        const{id}=req.params;
+
+        const deleteMovie = await Movie.findByIdAndDelete(id);
+      
+        if(!deleteMovie){
+          return res.status(404).json({message:"movie not found"});
+        }
+        res.status(200).json({message:"movie deleted successfully"})
+      
+    } catch (error) {
+     res.status(500).json({message:error.message})   
+    }
 }
 
 module.exports={
