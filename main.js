@@ -1,8 +1,18 @@
 const  express = require('express')
 const movieRoute = require('./routes/movies')
 
+require('dotenv').config()
+
+const connectDB = require('./connection/connection')
+connectDB()
 
 const app = express()
+
+
+
+
+
+
 
 app.get('/',(req,res)=>{
     res.json({msg:"hello world!"})
