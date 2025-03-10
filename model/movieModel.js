@@ -1,9 +1,19 @@
 const { Schema, model } = require("mongoose");
 
 const movieSchema = new Schema({
-    name:String,
-    origin:String,
-    language:String
+    name:{
+        type:String,
+        required:true,
+        unique:true
+    },
+    origin:{
+        type:String,
+        required:true
+    },
+    language:{
+        type:String,
+        required:true
+    }
 
 })
 
